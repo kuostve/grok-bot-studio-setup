@@ -1,15 +1,15 @@
 # 工作室一鍵重建（給 Grok Bot 看的指示）
 
-> 〈朋友重建指南〉就是同一個 repo 裡的 [GUIDE.md](https://github.com/kuostve/grok-bot-studio-setup/blob/main/GUIDE.md)，給人看的手把手版本。
+> 〈重建指南〉就是同一個 repo 裡的 [GUIDE.md](https://github.com/kuostve/grok-bot-studio-setup/blob/main/GUIDE.md)，給人看的手把手版本。
 
-給 Grok Bot：朋友請你幫他建一個「工作室」。下面是步驟，請你本人用 Shell 一步一步做，每步做完告訴朋友結果。這整份檔就是入口，朋友把這個網址或整段內容交給你就行。
+給 Grok Bot：使用者請你幫他建一個「工作室」。下面是步驟，請你本人用 Shell 一步一步做，每步做完告訴使用者結果。這整份檔就是入口，使用者把這個網址或整段內容交給你就行。
 
 規矩：
-- 不要幫朋友註冊、登入、付款；不要叫朋友把密碼或 API key 貼在聊天裡。遇到要登入或要金鑰，就停下來，用條列告訴朋友要在終端機打什麼指令，等朋友回「做完了」再繼續。
-- 指令出錯就把錯誤訊息最後 20 行貼給朋友，不要自己亂改系統設定。
-- 名字一律用朋友在步驟 0 的答案；朋友沒答就用預設值。
+- 不要幫使用者註冊、登入、付款；不要叫使用者把密碼或 API key 貼在聊天裡。遇到要登入或要金鑰，就停下來，用條列告訴使用者要在終端機打什麼指令，等使用者回「做完了」再繼續。
+- 指令出錯就把錯誤訊息最後 20 行貼給使用者，不要自己亂改系統設定。
+- 名字一律用使用者在步驟 0 的答案；使用者沒答就用預設值。
 
-步驟 0：先問朋友五個名字（一次問完；朋友直接按 Enter 就用預設值）：
+步驟 0：先問使用者五個名字（一次問完；使用者直接按 Enter 就用預設值）：
   1. 總管（就是你，Grok 本人）叫什麼？預設：總管
   2. 負責 Claude Code 的傳話 bot 叫什麼？預設：Claude助手
   3. 負責 Hermes／Haiku 的傳話 bot 叫什麼？預設：Haiku助手
@@ -197,14 +197,14 @@ echo
 echo "===== 檢查結果 ====="
 echo "名字：總管=$MGR_NAME｜Claude 傳話=$CLAUDE_NAME｜Haiku 傳話=$HAIKU_NAME｜Antigravity 傳話=$AGY_NAME｜工作室=$STUDIO_NAME"
 chk() { if command -v "$1" >/dev/null 2>&1; then echo "✅ $1：$("$1" --version 2>/dev/null | head -1)"; else echo "❌ $1：還沒裝（$2）"; fi; }
-chk claude "跑：bash $0 --install，或看朋友重建指南步驟 A1、C1"
-chk haiku  "跑：bash $0 --install，或看朋友重建指南步驟 A2、C2"
-chk agy    "要自己照 Google Antigravity 官網安裝 CLI，見朋友重建指南步驟 A3、C3"
+chk claude "跑：bash $0 --install，或看重建指南步驟 A1、C1"
+chk haiku  "跑：bash $0 --install，或看重建指南步驟 A2、C2"
+chk agy    "要自己照 Google Antigravity 官網安裝 CLI，見重建指南步驟 A3、C3"
 case ":$PATH:" in *":$BIN:"*) ;; *) echo "⚠️ $BIN 不在 PATH 裡；請在 ~/.bashrc 加一行：export PATH=\"$BIN:\$PATH\"";; esac
 echo
 echo "接下來要人自己做的事（登入／填金鑰）："
-echo "  1. claude      → 打 claude 進去後打 /login 登入，完成後打 /exit（用 API key 的照朋友重建指南 C1 方法 B）"
-echo "  2. haiku       → 寫入 OpenRouter API key：照朋友重建指南 C2（用 read -rs 輸入，金鑰不會留在指令紀錄）"
+echo "  1. claude      → 打 claude 進去後打 /login 登入，完成後打 /exit（用 API key 的照重建指南 C1 方法 B）"
+echo "  2. haiku       → 寫入 OpenRouter API key：照重建指南 C2（用 read -rs 輸入，金鑰不會留在指令紀錄）"
 echo "  3. agy（選做） → 先 cd $STUDIO 再打 agy，第一次開啟會請你用 Google 帳號登入、問要不要信任這個資料夾（選信任）"
 echo "做完再跑一次：bash $0   確認狀態。"
 SETUP_EOF
@@ -213,28 +213,28 @@ chmod +x ~/setup-cloud-studio.sh && echo 寫好了
 
 步驟 2：執行（block_until_ms 600000）：
   bash ~/setup-cloud-studio.sh --install --mgr "<總管名>" --claude "<Claude傳話名>" --haiku "<Haiku傳話名>" --agy "<Antigravity傳話名>" --studio "<工作室名>"
-它會建資料夾（優先 /workspace/cloud，不能寫就用 ~/cloud）、README、~/.local/bin/cloud-relay、~/.local/bin/haiku，並安裝 Claude Code CLI 和 Hermes。把最後的「檢查結果」整段貼給朋友。若顯示「名字不合法」，請朋友換一個名字再跑。
+它會建資料夾（優先 /workspace/cloud，不能寫就用 ~/cloud）、README、~/.local/bin/cloud-relay、~/.local/bin/haiku，並安裝 Claude Code CLI 和 Hermes。把最後的「檢查結果」整段貼給使用者。若顯示「名字不合法」，請使用者換一個名字再跑。
 
-步驟 3：如果 ~/.local/bin 不在 PATH，幫朋友在 ~/.bashrc 最後加一行 `export PATH="$HOME/.local/bin:$PATH"`（已經有就不要重複加）。
+步驟 3：如果 ~/.local/bin 不在 PATH，幫使用者在 ~/.bashrc 最後加一行 `export PATH="$HOME/.local/bin:$PATH"`（已經有就不要重複加）。
 
-步驟 4：停下來，告訴朋友要自己做這幾件事（照〈朋友重建指南〉C 段）：
+步驟 4：停下來，告訴使用者要自己做這幾件事（照〈重建指南〉C 段）：
   1. 在終端機打 `claude`，裡面打 `/login` 登入，完成後 `/exit`。
   2. 設定 OpenRouter 金鑰給 Haiku：照指南 C2 方法 A（用 read -rs 在終端機輸入，金鑰不會出現在畫面和指令紀錄），或 C2 方法 B 打 `haiku model` 選 OpenRouter 貼上 key。
   3.（選做）若想用 Antigravity 傳話，照 Google Antigravity 官網裝好 agy CLI、跑一次 `agy install`，再到工作室資料夾打 `agy` 用 Google 帳號登入、信任這個資料夾。
-  （若朋友用的是 Anthropic API Key 而不是訂閱，照指南 C1 第 4 步存到 ~/.config/cloud-studio/env。）
-等朋友回「做完了」。
+  （若使用者用的是 Anthropic API Key 而不是訂閱，照指南 C1 第 4 步存到 ~/.config/cloud-studio/env。）
+等使用者回「做完了」。
 
-步驟 5：朋友回「做完了」之後，再執行一次同樣的建置指令（步驟 2 那行，名字參數一個都不能少，否則會被換回預設名），然後各跑一次測試（沒裝的跳過），每個 block_until_ms 300000：
+步驟 5：使用者回「做完了」之後，再執行一次同樣的建置指令（步驟 2 那行，名字參數一個都不能少，否則會被換回預設名），然後各跑一次測試（沒裝的跳過），每個 block_until_ms 300000：
   - `[ -f ~/.config/cloud-studio/env ] && . ~/.config/cloud-studio/env; claude -p "回我 OK"`
   - `~/.local/bin/haiku -z "回我 OK"`
   - `agy -p "回我 OK"`
-把結果告訴朋友。
+把結果告訴使用者。
 
-步驟 6：把工作室 bots/ 資料夾裡的描述檔內容原文貼給朋友，檔名就是步驟 0 的名字：
-  - <總管名>.txt（朋友要把它貼進總管 bot 的描述）
+步驟 6：把工作室 bots/ 資料夾裡的描述檔內容原文貼給使用者，檔名就是步驟 0 的名字：
+  - <總管名>.txt（使用者要把它貼進總管 bot 的描述）
   - <Claude傳話名>.txt、<Haiku傳話名>.txt、<Antigravity傳話名>.txt
-告訴朋友：
+告訴使用者：
   - 把「<總管名>.txt」換成總管 bot 的描述；
   - 另外新增 3 隻 bot，名字必須和步驟 0 的答案一字不差：<Claude傳話名>、<Haiku傳話名>、<Antigravity傳話名>，各貼對應的 .txt（沒裝成功的那個 CLI，那隻可以先不建）。
 
-步驟 7：等朋友說 bot 建好了，你就照新描述當<總管名>：把 inbox 裡的「試跑」卡移到 doing，用互叫點名 <Claude傳話名>，訊息只寫一句「去看卡 <卡片完整路徑>」。對方回來後，打開卡片確認紀錄多了一行，告訴朋友成功或失敗。
+步驟 7：等使用者說 bot 建好了，你就照新描述當<總管名>：把 inbox 裡的「試跑」卡移到 doing，用互叫點名 <Claude傳話名>，訊息只寫一句「去看卡 <卡片完整路徑>」。對方回來後，打開卡片確認紀錄多了一行，告訴使用者成功或失敗。

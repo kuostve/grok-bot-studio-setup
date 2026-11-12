@@ -174,13 +174,13 @@ echo
 echo "===== 檢查結果 ====="
 echo "名字：總管=$MGR_NAME｜Claude 傳話=$CLAUDE_NAME｜Haiku 傳話=$HAIKU_NAME｜Antigravity 傳話=$AGY_NAME｜工作室=$STUDIO_NAME"
 chk() { if command -v "$1" >/dev/null 2>&1; then echo "✅ $1：$("$1" --version 2>/dev/null | head -1)"; else echo "❌ $1：還沒裝（$2）"; fi; }
-chk claude "跑：bash $0 --install，或看朋友重建指南步驟 A1、C1"
-chk haiku  "跑：bash $0 --install，或看朋友重建指南步驟 A2、C2"
-chk agy    "要自己照 Google Antigravity 官網安裝 CLI，見朋友重建指南步驟 A3、C3"
+chk claude "跑：bash $0 --install，或看重建指南步驟 A1、C1"
+chk haiku  "跑：bash $0 --install，或看重建指南步驟 A2、C2"
+chk agy    "要自己照 Google Antigravity 官網安裝 CLI，見重建指南步驟 A3、C3"
 case ":$PATH:" in *":$BIN:"*) ;; *) echo "⚠️ $BIN 不在 PATH 裡；請在 ~/.bashrc 加一行：export PATH=\"$BIN:\$PATH\"";; esac
 echo
 echo "接下來要人自己做的事（登入／填金鑰）："
-echo "  1. claude      → 打 claude 進去後打 /login 登入，完成後打 /exit（用 API key 的照朋友重建指南 C1 方法 B）"
-echo "  2. haiku       → 寫入 OpenRouter API key：照朋友重建指南 C2（用 read -rs 輸入，金鑰不會留在指令紀錄）"
+echo "  1. claude      → 打 claude 進去後打 /login 登入，完成後打 /exit（用 API key 的照重建指南 C1 方法 B）"
+echo "  2. haiku       → 寫入 OpenRouter API key：照重建指南 C2（用 read -rs 輸入，金鑰不會留在指令紀錄）"
 echo "  3. agy（選做） → 先 cd $STUDIO 再打 agy，第一次開啟會請你用 Google 帳號登入、問要不要信任這個資料夾（選信任）"
 echo "做完再跑一次：bash $0   確認狀態。"
