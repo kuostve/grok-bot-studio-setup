@@ -1,5 +1,7 @@
 # 工作室一鍵重建（給 Grok Bot 看的指示）
 
+> 〈朋友重建指南〉就是同一個 repo 裡的 [GUIDE.md](https://github.com/kuostve/grok-bot-studio-setup/blob/main/GUIDE.md)，給人看的手把手版本。
+
 給 Grok Bot：朋友請你幫他建一個「工作室」。下面是步驟，請你本人用 Shell 一步一步做，每步做完告訴朋友結果。這整份檔就是入口，朋友把這個網址或整段內容交給你就行。
 
 規矩：
